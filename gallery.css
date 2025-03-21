@@ -1,0 +1,248 @@
+/* Gallery Section Styling */
+.gallery-section {
+    padding: 2rem;
+  }
+  
+  .gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .gallery-item {
+    flex: 1 1 calc(33.333% - 1rem); /* Three columns on desktop */
+    max-width: calc(33.333% - 1rem);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Scroll Animation */
+  .gallery-item {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Modal Styling */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* Prevents image from sticking to the edges */
+  }
+
+  /* Modal Styling */
+.modal {
+    display: none; /* Ensures the modal is hidden */
+    visibility: hidden; /* Prevents the content from being rendered */
+    opacity: 0; /* Ensures no flicker on page load */
+  }
+  
+  .modal.show {
+    display: flex; /* Changes to flex when the modal is opened */
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* Adds fade-in effect */
+  }
+  
+  .modal-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%; /* Take up the full height to center the image */
+    padding: 20px;
+    overflow: auto; /* Allow scrolling if image is larger than screen */
+  }
+  
+  .modal-content {
+    width: auto; /* Allow original image width */
+    height: auto; /* Allow original image height */
+    max-width: 90%; /* Prevent the image from overflowing the screen */
+    max-height: 90%; /* Ensure the image stays within the screen height */
+    object-fit: contain; /* Preserve the aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+  }
+  
+  /* Close Button Styling */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it stays on top */
+    padding: 8px; /* Same padding for both open and close buttons */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Circular button shape */
+  }
+  
+  /* Responsive Styling for Smaller Screens */
+  @media (max-width: 1024px) {
+    .gallery-item {
+      flex: 1 1 calc(50% - 1rem); /* Two columns on tablets */
+      max-width: calc(50% - 1rem);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-item {
+      flex: 1 1 100%; /* One column on mobile */
+      max-width: 100%;
+    }
+  
+    .modal-content-wrapper {
+      max-width: 95%; /* Slightly smaller for mobile devices */
+      max-height: 80%;
+      padding: 10px;
+    }
+  
+    .close {
+      font-size: 20px; /* Smaller close button on mobile */
+      top: 5px;
+      right: 5px;
+      padding: 6px; /* Adjust padding to match smaller button */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal {
+      padding: 0.5rem; /* Reduced padding for very small devices */
+    }
+  
+    .modal-content-wrapper {
+      max-width: 90%;
+      max-height: 70%;
+    }
+  
+    .modal-content {
+      width: auto; /* Ensure image maintains original size */
+      height: auto;
+    }
+  
+    .close {
+      font-size: 18px; /* Even smaller close button */
+      padding: 4px; /* Adjust padding for smaller close button */
+    }
+  }
+
+  
+
+/* Bridal css */
+.animated-gallery-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.animated-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 15px;
+}
+
+.animated-gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8); /* Start with smaller size for zoom-out effect */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Add scaling transition */
+}
+
+/* Animation when images come into view (zoom-out to original size) */
+.animated-gallery-grid img.visible {
+    opacity: 1;
+    transform: scale(1); /* Scale back to original size */
+}
+
+/* Modal Styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.image-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: black;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.image-modal .close-modal:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .animated-gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 images per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-gallery-grid {
+        grid-template-columns: 1fr; /* 1 image per row on mobile */
+    }
+}
